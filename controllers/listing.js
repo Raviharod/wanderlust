@@ -1,11 +1,15 @@
 const Listing = require("../models/listing.js");
+const Booking = require("../models/booking.js");
 // const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 // mapToken = process.env.MAP_TOKEN;
 // const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
+  // console.log(allListings); 
   res.render("./listings/index.ejs", { allListings });
+  // console.log(req.user);
+  // res.send("index page");
 };
 
 module.exports.showListing = async (req, res) => {
@@ -18,14 +22,20 @@ module.exports.showListing = async (req, res) => {
         path: "author",
       },
     })
-    .populate("owner");
+    .populate("owner"); 
+  
+  const location = listing.location;
   if (!listing) {
     req.flash("error", "sorry this listing not exist!");
     res.redirect("/listings");
   }
-  // console.log(listing);
-  res.render("./listings/show.ejs", { listing });
+  let weatherData = await fetch(`http://api.weatherapi.com/v1/current.json?key=636a0af3c7284b41a66151902251304&q=${location}`).then(res=>res.json());
+  // console.log(req.user);
+  res.render("./listings/show.ejs", { listing , weatherData});
+  
 };
+
+
 
 module.exports.newFormRenderListing = (req, res) => {
   res.render("./listings/new.ejs");
@@ -100,3 +110,48 @@ module.exports.destroyListing = async (req, res) => {
   req.flash("success", "listing deleted!");
   res.redirect("/listings");
 };
+
+module.exports.searchListing = async(req, res)=>{
+  // res.send("searching is happened");
+  let {location} = req.body;
+  const allListings = await Listing.find({location:location});
+  res.render("./listings/index.ejs", { allListings });
+};
+
+module.exports.catogoryListing = async(req, res)=>{
+  // res.send("searching is happened");
+  let {catogory} = req.params;
+  const allListings = await Listing.find({catogory:catogory});
+  res.render("./listings/index.ejs", { allListings });
+};
+
+module.exports.listingUser = async(req, res)=>{
+  let {id, username, email} = req.user;
+  let allListings = await Listing.find({owner:id});
+
+  const bookings = await Booking.find({ user: id}).populate('listing'); 
+  // console.log(bookings);
+  res.render("./users/userProfile.ejs", {allListings, username, email, bookings});
+};
+
+module.exports.listingBookings = async(req, res)=>{
+  let {id} = req.params;
+  let userId = req.user._id;
+  const newBooking = new Booking({
+    user: userId,
+    listing:id
+  });
+
+  const existId = await Booking.findOne({listing: id});
+  
+  if(!existId){
+    await newBooking.save();
+    req.flash("success", "You successfully booked your hotel");
+    res.redirect(`/listings/${id}`);
+  }
+  else if(existId){
+    req.flash("error", "You have already booked the current Destination!");
+    res.redirect(`/listings/${id}`);
+  };
+};
+

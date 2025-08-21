@@ -3,19 +3,15 @@ body{
   display: flex;
   flex-direction: column;
   height: 100vh;
-  font-family: "Inter Tight" !important;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  /* background-color: #222222 !important; */
 }
 
-.container-fluid{
+.container{
   flex: 1;
 }
 
 .navbar{
   height: 5rem;
-  background-color:#222222;
+  background-color:white;
   padding: 2rem 0 2rem 0 !important;
 }
 
@@ -79,41 +75,17 @@ body{
 
 .listing-card{
   border: none !important;
-  border-radius: 0.7rem !important;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease-in-out;
+  margin-bottom: 2rem;
 }
-
-.listing-card:hover{
-  transform: scale(1.1);
-}
-
-
 
 .card-img-top{
-  border-radius: 0.7rem 0.7rem 0.7rem 0.7rem !important;
+  border-radius: 1rem !important;
   width: 100%;
   object-fit: cover;
 }
 
-.show-card-body{
+.card-body{
   padding: 0%;
-  display: flex;
-  flex-direction: column !important;
-  align-items: center;
-  justify-content: center;
-}
-
-.show-card{
-  border: none !important;
-}
-
-.card-body p{
-  margin: 0%;
-}
-
-.card-body-price{
-  color: #fe424d;
 }
 
 .image-anchor{
@@ -122,7 +94,15 @@ body{
 
 .card-text{
   font-weight: 400 !important;
-  font-size: 1.2rem;
+}
+
+.card-img-overlay{
+  opacity: 0;
+}
+
+.card-img-overlay:hover{
+  opacity: 0.2;
+  background-color:white;
 }
 
 .new-btn{
@@ -144,11 +124,6 @@ body{
 
 .btns{
   display: flex;
-  /* align-items: flex-start; */
-  gap: 1rem;
-  padding-right: 0% !important;
-  width: 30rem !important;
-
 }
 
 .show-card{

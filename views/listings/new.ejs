@@ -2,10 +2,17 @@
 <body>
   <div class="row">
     <div class="col-8 offset-2">
-      <br><br>
-      <h3>create new listing</h3><br>
+      <br /><br />
+      <h3>Host Your Stay</h3>
+      <br />
 
-      <form action="/listings" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+      <form
+        action="/listings"
+        method="POST"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input
@@ -15,9 +22,7 @@
             class="form-control"
             required
           />
-          <div class="valid-feedback">
-            Looks good!
-          </div>
+          <div class="valid-feedback">Looks good!</div>
           <div class="invalid-feedback">Please Enter Valid Title</div>
         </div>
         <div class="mb-3">
@@ -29,9 +34,7 @@
             class="form-control"
             required
           />
-          <div class="valid-feedback">
-            Looks good!
-          </div>
+          <div class="valid-feedback">Looks good!</div>
           <div class="invalid-feedback">Please Enter Short Description</div>
         </div>
         <div class="mb-3">
@@ -53,12 +56,10 @@
               class="form-control"
               required
             />
-            <div class="valid-feedback">
-              Looks good!
-            </div>
+            <div class="valid-feedback">Looks good!</div>
             <div class="invalid-feedback">Please Enter Valid Price</div>
           </div>
-          <div class="mb-3 col-md-8" >
+          <div class="mb-3 col-md-8">
             <label for="country" class="form-label">Enter Country</label>
             <input
               type="text"
@@ -67,13 +68,11 @@
               class="form-control"
               required
             />
-            <div class="valid-feedback">
-              Looks good!
-            </div>
+            <div class="valid-feedback">Looks good!</div>
             <div class="invalid-feedback">Please Enter Valid Country Name</div>
           </div>
         </div>
-        
+
         <div class="mb-3">
           <label for="location" class="form-label">Enter Location</label>
           <input
@@ -83,14 +82,29 @@
             class="form-control"
             required
           />
-          <div class="valid-feedback">
-            Looks good!
-          </div>
+          <div class="valid-feedback">Looks good!</div>
           <div class="invalid-feedback">Please Enter Valid Location</div>
+        </div>
+        <div class="mb-3">
+          <label for="catogory" class="form-label">Enter Catogory</label>
+          <select type="radio" id="catogory" name="listing[catogory]" size="1">
+            <option value="trending">Trending</option>
+            <option value="rooms">Rooms</option>
+            <option value="iconic-cities">Iconic Cities</option>
+            <option value="mountains">Mountains</option>
+            <option value="castels">Castels</option>
+            <option value="amazing-pools">Amazing Pools</option>
+            <option value="camping">Camping</option>
+            <option value="arctic">Arctic</option>
+            <option value="dome">Dome</option>
+            <option value="boats">Boats</option>
+          </select>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please Enter Valid Catogory</div>
         </div>
         <button class="btn btn-dark new-btn">Add</button>
       </form>
-      <br><br>
+      <br /><br />
     </div>
   </div>
 </body>

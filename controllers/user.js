@@ -1,4 +1,5 @@
 const User = require("../models/user.js");
+const Booking = require("../models/booking.js");
 
 module.exports.userSignupForm = (req,res)=>{
   res.render("./users/signup.ejs");
@@ -42,3 +43,10 @@ module.exports.logoutUser = (req,res,next)=>{
     res.redirect("/listings");
   });
 };
+
+module.exports.deleteBooking = async(req,res)=>{
+  let {id : listingId} = req.params;
+  let {id : userId} = req.user;
+await Booking.findOneAndDelete({listing:listingId});
+res.redirect(`/listings/user/profile`);
+}

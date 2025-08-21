@@ -59,5 +59,25 @@ router.get(
   wrapAsync(listingController.editFormRenderListing)
 );
 
+router.post(
+  "/search",
+  wrapAsync(listingController.searchListing)
+);
+
+router.get(
+  "/filter/:catogory",
+  wrapAsync(listingController.catogoryListing)
+);
+
+router.get(
+  "/user/profile",
+  wrapAsync(listingController.listingUser)
+);
+
+router.post(
+  "/booking/:id",
+  wrapAsync(listingController.listingBookings)
+);
+
 //exposrting our router object
 module.exports = router;

@@ -1,0 +1,277 @@
+<% layout('/layouts/boilerplate') %>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color:#e5eaf5;
+            margin: 0;
+            padding: 0;
+        }
+        .user-container{
+          margin-top: 10px;
+          display: grid;
+          grid-template-columns: 12rem 1fr;
+        }
+        
+        .user-image{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+        .profile-header {
+            background-size: cover;
+            background-position: center;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 20px;
+            border-radius:5px;
+            margin-bottom: 20px;
+            position: relative;
+            background-color: #333;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            position: relative; /* So the name is positioned relative to this container */
+            z-index: 1;
+            flex-direction: column;
+        }
+
+        .user-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-name-and-location {
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .user-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .user-location {
+            font-size: 0.9rem;
+        }
+
+        .upload-button {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: absolute; /* Position absolutely within the profile header */
+            bottom: 20px;
+            right: 20px;
+            z-index: 1;
+        }
+
+        .upload-button:hover {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .user-stats {
+            background-color: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: -10px; /* Overlap the profile header */
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .user-stats-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .user-stats-label {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .user-stats-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+
+        .my-favourites-section {
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            padding-left: 10px;
+        }
+
+        .hotel-cards-container {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+        }
+
+        .hotel-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            width: 18rem;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hotel-image-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .hotel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .hotel-image:hover {
+            transform: scale(1.05);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff6700;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .hotel-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+        }
+
+        .hotel-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .hotel-rating {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hotel-rating i {
+            margin-right: 5px;
+            color: #ffd700;
+        }
+
+        .hotel-location {
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+  <div class="user-container">
+    <div class="profile-header">
+        <div class="user-info">
+            <div><img class="user-image mb-2" src="https://img.freepik.com/premium-vector/social-media-logo_1305298-29989.jpg?semt=ais_hybrid&w=740" alt=""></div>
+            <div class="user-name-and-location">
+                <div class="user-name ms-3"><%= username %></div>
+                <div class="user-location"><%= email %></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-favourites-section">
+        <h2 class="section-title">Hosted By Me</h2>
+        <div class="hotel-cards-container">
+          <%for(listing of allListings){%>
+                <div class="hotel-card">
+                    <div class="hotel-image-container">
+                        <img src="<%= listing.image.url %>" alt="" class="hotel-image">
+                    </div>
+                    <div class="hotel-info">
+                        <h3 class="hotel-name"><%= listing.title %></h3>
+                        <p> &#8377 <%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %>/night</p>
+                        <p class="hotel-location"><%= listing.location %></p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="my-favourites-section">
+        <h2 class="section-title">My Bookings</h2>
+        <div class="hotel-cards-container">
+          <%for(booking of bookings){%>
+                <div class="hotel-card card"  style="width: 18rem;">
+                    <div class="hotel-image-container">
+                        <img src="<%= booking.listing.image.url %>" alt="" class="hotel-image">
+                    </div>
+                    <div class="hotel-info card-body">
+                        <h3 class="hotel-name"><%= booking.listing.title %></h3>
+                        <p> &#8377 <%= booking.listing.price ? booking.listing.price.toLocaleString("en-IN") : "Price not available" %>/night</p>
+                        <p class="hotel-location"><%= booking.listing.location %></p>
+                    </div>
+                    <form action="/booking/delete/<%= booking.listing._id %>" method="post">
+                        <button class="btn btn-dark mb-2 ms-2">Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+  </div>
+</body>
+    

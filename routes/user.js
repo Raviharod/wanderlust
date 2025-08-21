@@ -25,4 +25,10 @@ router.route("/login")
 //logout route
 router.get("/logout", userController.logoutUser);
 
+//delete booking route
+router.post(
+  "/booking/delete/:id",
+  userController.deleteBooking,
+);
+
 module.exports = router;

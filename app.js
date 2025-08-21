@@ -24,6 +24,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
+const dbUrl = process.env.ATLASDB_URL;
+
 const store = MongoStore.create({
   mongoUrl: dbUrl,
   crypto:{
@@ -59,7 +61,7 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-const dbUrl = process.env.ATLASDB_URL;
+
 
 main()
   .then(() => {
@@ -126,7 +128,7 @@ app.all("*", (req, res, next)=>{
 //   console.log("data is saved successfully");
 //   res.send("data is saved");
 // })
-
+ 
 
 app.use((err, req, res, next) => {
   let {statusCode = 500, message = "something went wrong"} = err;
@@ -134,6 +136,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", {message});
 });
 
-app.listen(8080, () => {
-  console.log("app is listening on port 8080");
-});
+// app.listen(8080, () => {
+//   console.log("app is listening on port: http://localhost:8080");
+// });
+module.exports = app;

@@ -1,123 +1,283 @@
 <% layout('/layouts/boilerplate') %>
 
-<style>
-  .filters{
-    margin-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .filter{
-    text-align: center;
-    margin-right: 2rem;
-    opacity: 0.7;
-  }
-  .filter:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
-  .filter p {
-    font-size:0.8rem;
-  }
-  .tax-info{
-    display: none;
-  }
-  .tax-toggle{
-    border: 1px solid black;
-    border-radius: 1rem;
-    height: 3 rem;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    margin-left: 2rem;
-  }
-</style>
+  <style>
+    .hero {
+      height: 90vh;
+      width: 100% !important;
+      border-radius: 10px 10px 10px 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      color: #fe424d !important;
+      position: relative;
+      margin: 0;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      background-color: black;
+    }
 
-  <div class="filters">
-    <div class="filter">
-      <div><i class="fa-solid fa-fire"></i></div>
-      <p>Trending</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-bed"></i></i></div>
-      <p>Rooms</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-mountain-city"></i></i></div>
-      <p>Iconic Cities</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-mountain-sun"></i></div>
-      <p>Mountains</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-chess-rook"></i></i></div>
-      <p>Castels</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-person-swimming"></i></div>
-      <p>Amazing Pools</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-campground"></i></div>
-      <p>Camping</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-cow"></i></div>
-      <p>Farms</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-snowflake"></i></div>
-      <p>Arctic</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-igloo"></i></div>
-      <p>Dome</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-ship"></i></div>
-      <p>Boats</p>
-    </div>
+    .hero-options {
+      position: absolute;
+      background-color: antiquewhite;
+      padding: 4px 5px 4px 10px;
+      border-radius: 20px;
+      top: 75vh;
+    }
 
-    <div class="tax-toggle">
-      <div class="form-check-reverse form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-        <label class="form-check-label" for="switchCheckDefault">Display Total After Taxes</label>
+    .filters {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter {
+      text-align: center;
+      margin-right: 2rem;
+      opacity: 0.7;
+    }
+
+    .filter-icon {
+      font-size: 23px;
+    }
+
+    .filter:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .filter p {
+      font-size: 0.8rem;
+    }
+
+    .tax-info {
+      display: none;
+    }
+
+    .tax-toggle {
+      display: flex;
+      flex-direction: column;
+      border-radius: 1rem;
+      height: 15rem !important;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      margin-left: 2rem;
+      margin: 5px;
+      align-items: center;
+      justify-content: center;
+      font-family: "Inter Tight";
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      width: 100%;
+      height: 90vh;
+      gap: 4px;
+      border-radius: 10px 0 0 10px !important;
+
+    }
+
+    .gallery img {
+      flex-shrink: 0;
+      width: 100%;
+      height: auto;
+      opacity: 0.9;
+    }
+
+    .card-img {
+      height: 15rem !important;
+    }
+
+    .translate-middle {
+      z-index: 10 !important;
+    }
+   .hero-text{
+    color: white !important;
+   }
+   .hero-text h1{
+      font-size: 4rem !important;
+   }
+   .sub-form-switch{
+    position: absolute;
+    bottom: 5vh;
+    left: 43%;
+   }
+
+  </style>
+  <div class="hero position-relative">
+    <div class="position-absolute top-50 start-50 translate-middle hero-text">
+      <h5 class="fs-3">Away from monotonous life</h5>
+      <h1><b>Relax Your Mind</b></h1>
+      <p fs-4>If you are looking at blank cassettes on the web, you may be very confused at the
+        difference in price. You may see some for as low as $.17 each.</p>
+    </div>
+    <div class="gallery" id="gallery">
+      <img
+        src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+      <img
+        src="https://images.pexels.com/photos/24913567/pexels-photo-24913567/free-photo-of-sea-star-beau-rivage-hotel-in-egypt.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+      <img
+        src="https://images.pexels.com/photos/1145257/pexels-photo-1145257.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+      <img
+        src="https://images.pexels.com/photos/751268/pexels-photo-751268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+      <img
+        src="https://images.pexels.com/photos/452726/pexels-photo-452726.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+      <img
+        src="https://images.pexels.com/photos/1134175/pexels-photo-1134175.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+      <img
+        src="https://images.unsplash.com/photo-1468824357306-a439d58ccb1c?q=80&w=1959&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+    </div>
+    <div class="hero-options">
+      <div class="filters">
+        <div class="filter">
+          <div><i class="fa-solid fa-fire filter-icon"></i></div>
+          <p>Trending</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-bed filter-icon"></i></i></div>
+          <p>Rooms</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-mountain-city filter-icon"></i></i></div>
+          <p>Iconic Cities</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-mountain-sun filter-icon"></i></div>
+          <p>Mountains</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-chess-rook filter-icon"></i></i></div>
+          <p>Castels</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-person-swimming filter-icon"></i></div>
+          <p>Amazing Pools</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-campground filter-icon"></i></div>
+          <p>Camping</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-cow filter-icon"></i></div>
+          <p>Farms</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-snowflake filter-icon"></i></div>
+          <p>Arctic</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-igloo filter-icon"></i></div>
+          <p>Dome</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-ship filter-icon"></i></div>
+          <p>Boats</p>
+        </div>
       </div>
     </div>
   </div>
-  <h2><%= success %></h2>
-  <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
-    <%for(listings of allListings){%>
-      <a href="/listings/<%= listings._id %>" class="image-anchor">
-    <div class="card listing-card">
-      <img src="<%= listings.image.url  %>" class="card-img-top" alt="..." style="height:20rem;"/>
-      <div class="card-img-overlay">gfjh</div>
-      <div class="card-body">
-        <p class="card-text">
-          <b><%= listings.title %></b> <br>
-          &#8377 <%= listings.price ? listings.price.toLocaleString("en-IN") : "Price not available" %>/night
-          <i class="tax-info">+18% GST</i>
-        </p>
-      </div>
+  <div class="tax-toggle">
+      <h1>Your Destinations</h1>
+      <p class="fs-6 fw-normal">We all live in an age that belongs to the young at heart. Life that is becoming extremely fast</p>
+  </div>
+  <div class="form-check-reverse form-switch position-relative bg-primary">
+    <div class="sub-form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+    <label class="form-check-label" for="switchCheckDefault">Display Total After Taxes</label>
+  </div>
+</div>
+
+<%- include("../includes/chatAssist.ejs") %>
+  <h2>
+    <%= success %>
+  </h2>
+  <div class="container mt-3">
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 card-container">
+      <%for(listings of allListings){%>
+        <a href="/listings/<%= listings._id %>" class="image-anchor">
+          <div class="card listing-card">
+            <img src="<%= listings.image.url  %>" class="card-img-top card-img" alt="..." style="height:20rem;" />
+            <div class="card-body show-card-body">
+              <p class="card-text">
+                  <b><%= listings.title %></b>
+              </p>
+              <p class="fs-4 card-body-price">
+                &#8377 <%= listings.price ? listings.price.toLocaleString("en-IN") : "Price not available" %>/night
+                  <i class="tax-info">+18% GST</i>
+              </p>
+            </div>
+          </div>
+        </a>
+        <%}%>
     </div>
-  </a>
-    <%}%>
-  </div> 
+  </div>
+
+
+  <%- include("../includes/facilities.ejs") %>
+  <%- include("../includes/about.ejs") %>
+ 
+
+
   <script>
     let taxSwitch = document.getElementById("switchCheckDefault");
     let taxInfo = document.getElementsByClassName("tax-info");
-    taxSwitch.addEventListener("click", ()=>{
-      for(info of taxInfo){
-        if(info.style.display != "inline"){
+    const filters = document.querySelectorAll(".filter");
+
+    taxSwitch.addEventListener("click", () => {
+      for (info of taxInfo) {
+        if (info.style.display != "inline") {
           info.style.display = "inline";
         }
-        else{
+        else {
           info.style.display = "none";
         }
       }
     });
+
+    filters.forEach((filter) => {
+      filter.addEventListener("click", function () {
+        // Get the text inside the <p> tag
+        const category = this.querySelector("p").innerText;
+
+        // Log it to check
+        console.log("Selected Category:", category);
+        
+        // You can send it somewhere, for example, redirecting
+        window.location.href = `listings/filter/${category.toLowerCase().replace(/\s+/g, '-')}`;
+      });
+    });
+
+
+    const gallery = document.getElementById('gallery');
+    const stepSize = 1501; // image width + gap
+    const delay = 2000; // time between steps
+
+    function stepScroll() {
+      const maxScrollLeft = gallery.scrollWidth - gallery.clientWidth;
+
+      if (gallery.scrollLeft + stepSize >= maxScrollLeft) {
+        // Reset to beginning if we're at the end
+        gallery.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        // Step scroll to the right
+        gallery.scrollBy({ left: stepSize, behavior: 'smooth' });
+      }
+    }
+
+    setInterval(stepScroll, delay);
+
+
   </script>
-  
-</body>
-  
+
+  </body>
