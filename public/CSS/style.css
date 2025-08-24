@@ -19,6 +19,7 @@ body{
   padding: 2rem 0 2rem 0 !important;
 }
 
+
 .fa-compass{
   color: #fe424d;
   font-size: 2rem;
@@ -29,11 +30,28 @@ body{
 }
 
 .nav-options{
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: row !important;
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
+  justify-content: center;
+}
+
+@media (max-width:762px) {
+  .navbar-collapse{
+    color: white !important;
+    background-color: #faebd7dd !important;
+    padding:1rem;
+    margin-top:6px;
+    border-radius: 8px;
+  }
+  .navbar-toggler{
+    background-color: #fe424d !important;
+  }
+  .nav-options{
+    margin-top: 1rem !important;
+  }
 }
 
 .fa-user{

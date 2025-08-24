@@ -129,7 +129,8 @@
     }
 
     .booking-btn {
-      width: 25rem !important;
+      /* width: 25rem !important; */
+      padding: 0.5rem !important;
       height: 3rem !important;
     }
 
@@ -147,6 +148,7 @@
     .review-card {
       background-color: #ddd;
       min-height: 5rem !important;
+      min-width: auto !important;
     }
     .img-div{
       display:grid;
@@ -244,7 +246,7 @@
       <div class="row offset-2">
         <h4><b>All Reviews</b></h4>
         <% for (rew of listing.review) { %>
-          <div class="card mb-2 ms-1 col-5 review-card">
+          <div class="card mb-2 ms-1 col-8 review-card">
             <div class="card-body">
               <h5 class="card-title"><b>
                   <%= rew.author.username.toUpperCase() %>

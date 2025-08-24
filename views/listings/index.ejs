@@ -2,7 +2,8 @@
 
   <style>
     .hero {
-      height: 90vh;
+      min-height: 20vh;
+      max-height: 90vh;
       width: 100% !important;
       border-radius: 10px 10px 10px 10px;
       display: flex;
@@ -20,19 +21,25 @@
     }
 
     .hero-options {
-      position: absolute;
       background-color: antiquewhite;
-      padding: 4px 5px 4px 10px;
+      /* padding: 4px 5px 4px 10px; */
       border-radius: 20px;
-      top: 75vh;
+      height: 13%;
+      width: 90%;
     }
 
     .filters {
-      margin-top: 15px;
       display: flex;
-      flex-wrap: wrap;
+      justify-content: center;
       align-items: center;
+      height: 100%;
+      width: 100%;
+      padding: auto;
     }
+
+    .filters::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
 
     .filter {
       text-align: center;
@@ -82,7 +89,8 @@
       scroll-behavior: smooth;
       scrollbar-width: none;
       width: 100%;
-      height: 90vh;
+      min-height: 20vh;
+      max-height: 90vh;
       gap: 4px;
       border-radius: 10px 0 0 10px !important;
 
@@ -104,22 +112,29 @@
     }
    .hero-text{
     color: white !important;
+    text-align: left;
+    height: 35%;
    }
-   .hero-text h1{
-      font-size: 4rem !important;
-   }
+   
    .sub-form-switch{
-    position: absolute;
+    position:absolute;
     bottom: 5vh;
-    left: 43%;
+    text-align: center;
+    margin: auto;
+   }
+
+   @media (max-width:590px) {
+    .hero p{
+      display: none;
+    }
    }
 
   </style>
   <div class="hero position-relative">
     <div class="position-absolute top-50 start-50 translate-middle hero-text">
-      <h5 class="fs-3">Away from monotonous life</h5>
-      <h1><b>Relax Your Mind</b></h1>
-      <p fs-4>If you are looking at blank cassettes on the web, you may be very confused at the
+      <h5 class="fs-5">Away from monotonous life</h5>
+      <h1 class="fs-1"><b class="fs-1">Relax Your Mind</b></h1>
+      <p class="fs-6">If you are looking at blank cassettes on the web, you may be very confused at the
         difference in price. You may see some for as low as $.17 each.</p>
     </div>
     <div class="gallery" id="gallery">
@@ -138,8 +153,8 @@
       <img
         src="https://images.unsplash.com/photo-1468824357306-a439d58ccb1c?q=80&w=1959&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
     </div>
-    <div class="hero-options">
-      <div class="filters">
+    <div class="hero-options position-absolute start-50 bottom-0 translate-middle">
+      <div class="filters overflow-x-scroll">
         <div class="filter">
           <div><i class="fa-solid fa-fire filter-icon"></i></div>
           <p>Trending</p>
@@ -191,10 +206,11 @@
       <h1>Your Destinations</h1>
       <p class="fs-6 fw-normal">We all live in an age that belongs to the young at heart. Life that is becoming extremely fast</p>
   </div>
-  <div class="form-check-reverse form-switch position-relative bg-primary">
-    <div class="sub-form-switch">
+  <div class="form-check-reverse form-switch position-relative sub-form-switch">
+    <div>
     <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
     <label class="form-check-label" for="switchCheckDefault">Display Total After Taxes</label>
+  </div>
   </div>
 </div>
 
@@ -230,6 +246,8 @@
 
 
   <script>
+    let width = window.innerWidth;
+    console.log("inner width", width);
     let taxSwitch = document.getElementById("switchCheckDefault");
     let taxInfo = document.getElementsByClassName("tax-info");
     const filters = document.querySelectorAll(".filter");
@@ -260,7 +278,7 @@
 
 
     const gallery = document.getElementById('gallery');
-    const stepSize = 1501; // image width + gap
+    const stepSize = width-20; // image width + gap
     const delay = 2000; // time between steps
 
     function stepScroll() {

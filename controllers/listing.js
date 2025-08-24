@@ -130,7 +130,7 @@ module.exports.listingUser = async(req, res)=>{
   let allListings = await Listing.find({owner:id});
 
   const bookings = await Booking.find({ user: id}).populate('listing'); 
-  // console.log(bookings);
+  // console.log(allListings);
   res.render("./users/userProfile.ejs", {allListings, username, email, bookings});
 };
 
